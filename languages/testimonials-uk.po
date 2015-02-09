@@ -1,0 +1,166 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: testimonials\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-09 10:42+0300\n"
+"PO-Revision-Date: 2015-02-09 10:44+0300\n"
+"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
+"Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-Language: Ukrainian\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: bws-testimonials.php:80
+msgid "Testimonials Settings"
+msgstr "Налаштування Testimonials"
+
+#: bws-testimonials.php:80
+#: bws-testimonials.php:135
+#: bws-testimonials.php:169
+msgid "Testimonials"
+msgstr "Testimonials"
+
+#: bws-testimonials.php:105
+msgid "Testimonials Info"
+msgstr "Інформація про Testimonials"
+
+#: bws-testimonials.php:126
+msgid "requires"
+msgstr "вимагає"
+
+#: bws-testimonials.php:126
+msgid "or higher, that is why it has been deactivated! Please upgrade WordPress and try again."
+msgstr "або вище, ось чому його було деактивовано! Будь ласка, оновіть WordPress та спробуйте ще раз."
+
+#: bws-testimonials.php:126
+msgid "Back to the WordPress"
+msgstr "Повернутись на WordPress"
+
+#: bws-testimonials.php:136
+msgid "Testimonial"
+msgstr "Відгук"
+
+#: bws-testimonials.php:144
+msgid "Add a new testimonial"
+msgstr "Додати новий відгук"
+
+#: bws-testimonials.php:145
+msgid "Edit testimonials"
+msgstr "Редагувати відгук"
+
+#: bws-testimonials.php:146
+msgid "New testimonial"
+msgstr "Новий відгук"
+
+#: bws-testimonials.php:147
+msgid "View testimonials"
+msgstr "Проглянути відгуки"
+
+#: bws-testimonials.php:148
+msgid "Search testimonials"
+msgstr "Шукати відгук"
+
+#: bws-testimonials.php:149
+msgid "No testimonials found"
+msgstr "Жодного відгуку не знайдено"
+
+#: bws-testimonials.php:150
+msgid "No testimonials found in Trash"
+msgstr "В Кошику не знайдено жодного відгуку"
+
+#: bws-testimonials.php:202
+msgid "Changes saved"
+msgstr "Зміни збережено"
+
+#: bws-testimonials.php:208
+#: bws-testimonials.php:426
+#: bws-testimonials.php:437
+msgid "Settings"
+msgstr "Налаштування"
+
+#: bws-testimonials.php:209
+#: bws-testimonials.php:438
+msgid "FAQ"
+msgstr "FAQ"
+
+#: bws-testimonials.php:211
+msgid "Notice:"
+msgstr "Зверніть увагу:"
+
+#: bws-testimonials.php:211
+msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
+msgstr "Налаштування плагіну змінено. Щоб зберегти їх, будь ласка, не забудьте клікнути 'Зберегти  зміни'."
+
+#: bws-testimonials.php:217
+msgid "If you would like to display testimonials with a widget, you need to add the widget"
+msgstr "Якщо ви хочете, щоб відгуки відображались за допомогою віджету, вам потрібно спершу його додати"
+
+#: bws-testimonials.php:218
+#: bws-testimonials.php:313
+msgid "Testimonials Widget"
+msgstr "Віджет \"Відгуки\""
+
+#: bws-testimonials.php:219
+msgid "on the Widgets tab"
+msgstr "на вкладці віджетів"
+
+#: bws-testimonials.php:222
+msgid "If you would like to add testimonials to your website, just copy and paste this shortcode into your post or page:"
+msgstr "Якщо ви хочете додати відгуки на свій сайт,  вставте цей шорткод у контент сторінки чи посту:"
+
+#: bws-testimonials.php:225
+msgid "Also, you can paste the following strings into the template source code"
+msgstr "Також ви можете вставити наступні строки у початковий код шаблону"
+
+#: bws-testimonials.php:235
+msgid "Widget title"
+msgstr "Назва Віджету"
+
+#: bws-testimonials.php:241
+#: bws-testimonials.php:343
+msgid "Number of testimonials to be displayed"
+msgstr "Кількість відгуків, що будуть відображатись"
+
+#: bws-testimonials.php:249
+msgid "Save Changes"
+msgstr "Зберегти зміни"
+
+#: bws-testimonials.php:256
+msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+msgstr "Якщо вам сподобався наш плагін, будь ласка, поставте нам 5 зірочок на WordPress"
+
+#: bws-testimonials.php:257
+msgid "Rate the plugin"
+msgstr "Оцінити плагін"
+
+#: bws-testimonials.php:260
+msgid "If there is something wrong about it, please contact us"
+msgstr "Якщо виникли проблеми, будь ласка, повідомте нам"
+
+#: bws-testimonials.php:273
+msgid "Author"
+msgstr "Автор"
+
+#: bws-testimonials.php:277
+msgid "Company Name"
+msgstr "Назва компанії"
+
+#: bws-testimonials.php:314
+msgid "Widget for displaying Testimonials."
+msgstr "Віджет для відображення відгуків."
+
+#: bws-testimonials.php:339
+msgid "Widget Title"
+msgstr "Назва віджету"
+
+#: bws-testimonials.php:439
+msgid "Support"
+msgstr "Техпідтримка"
+
