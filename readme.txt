@@ -82,7 +82,7 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 3. the version of your WordPress installation
 4. copy and paste your system status report into the message . Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instuction on System Status</a>
 
-== Screenshots =
+== Screenshots ==
 
 1. Testimonial Settings page.
 2. Testimonial Widget in WordPress admin panel.
