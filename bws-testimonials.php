@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Testimonials by BestWebSoft
-Plugin URI: http://bestwebsoft.com/plugin/
+Plugin URI: http://bestwebsoft.com/products/
 Description: Plugin for displaying Testimonials.
 Author: BestWebSoft
-Version: 0.1
+Version: 0.1.1
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -28,65 +28,26 @@ License: GPLv3 or later
 /* Add option page in admin menu */
 if ( ! function_exists( 'tstmnls_admin_menu' ) ) {
 	function tstmnls_admin_menu() {
-		global $bstwbsftwppdtplgns_options, $bstwbsftwppdtplgns_added_menu;
-		$bws_menu_info = get_plugin_data( plugin_dir_path( __FILE__ ) . "bws_menu/bws_menu.php" );
-		$bws_menu_version = $bws_menu_info["Version"];
-		$base = plugin_basename( __FILE__ );
-
-		if ( ! isset( $bstwbsftwppdtplgns_options ) ) {
-			if ( is_multisite() ) {
-				if ( ! get_site_option( 'bstwbsftwppdtplgns_options' ) )
-					add_site_option( 'bstwbsftwppdtplgns_options', array(), '', 'yes' );
-				$bstwbsftwppdtplgns_options = get_site_option( 'bstwbsftwppdtplgns_options' );
-			} else {
-				if ( ! get_option( 'bstwbsftwppdtplgns_options' ) )
-					add_option( 'bstwbsftwppdtplgns_options', array(), '', 'yes' );
-				$bstwbsftwppdtplgns_options = get_option( 'bstwbsftwppdtplgns_options' );
-			}
-		}
-
-		if ( isset( $bstwbsftwppdtplgns_options['bws_menu_version'] ) ) {
-			$bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] = $bws_menu_version;
-			unset( $bstwbsftwppdtplgns_options['bws_menu_version'] );
-			if ( is_multisite() )
-				update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options, '', 'yes' );
-			else
-				update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options, '', 'yes' );
-			require_once( dirname( __FILE__ ) . '/bws_menu/bws_menu.php' );
-		} else if ( ! isset( $bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] ) || $bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] < $bws_menu_version ) {
-			$bstwbsftwppdtplgns_options['bws_menu']['version'][ $base ] = $bws_menu_version;
-			if ( is_multisite() )
-				update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options, '', 'yes' );
-			else
-				update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options, '', 'yes' );
-			require_once( dirname( __FILE__ ) . '/bws_menu/bws_menu.php' );
-		} else if ( ! isset( $bstwbsftwppdtplgns_added_menu ) ) {
-			$plugin_with_newer_menu = $base;
-			foreach ( $bstwbsftwppdtplgns_options['bws_menu']['version'] as $key => $value ) {
-				if ( $bws_menu_version < $value && is_plugin_active( $base ) ) {
-					$plugin_with_newer_menu = $key;
-				}
-			}
-			$plugin_with_newer_menu = explode( '/', $plugin_with_newer_menu );
-			$wp_content_dir = defined( 'WP_CONTENT_DIR' ) ? basename( WP_CONTENT_DIR ) : 'wp-content';
-			if ( file_exists( ABSPATH . $wp_content_dir . '/plugins/' . $plugin_with_newer_menu[0] . '/bws_menu/bws_menu.php' ) )
-				require_once( ABSPATH . $wp_content_dir . '/plugins/' . $plugin_with_newer_menu[0] . '/bws_menu/bws_menu.php' );
-			else
-				require_once( dirname( __FILE__ ) . '/bws_menu/bws_menu.php' );	
-			$bstwbsftwppdtplgns_added_menu = true;			
-		}
-
-		add_menu_page( 'BWS Plugins', 'BWS Plugins', 'manage_options', 'bws_plugins', 'bws_add_menu_render', plugins_url( "images/px.png", __FILE__ ), 1001 ); 
-		add_submenu_page( 'bws_plugins', __( 'Testimonials Settings', 'testimonials' ), __( 'Testimonials', 'testimonials' ), 'manage_options', "testimonials.php", 'tstmnls_settings_page' );
+		bws_add_general_menu( plugin_basename( __FILE__ ) );
+		add_submenu_page( 'bws_plugins', 'Testimonials ' . __( 'Settings', 'testimonials' ), 'Testimonials', 'manage_options', "testimonials.php", 'tstmnls_settings_page' );
 	}
 }
 
 if ( ! function_exists ( 'tstmnls_init' ) ) {
 	function tstmnls_init() {
+		global $tstmnls_plugin_info;
 		load_plugin_textdomain( 'testimonials', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
+		require_once( dirname( __FILE__ ) . '/bws_menu/bws_functions.php' );
+		
+		if ( empty( $tstmnls_plugin_info ) ) {
+			if ( ! function_exists( 'get_plugin_data' ) )
+				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			$tstmnls_plugin_info = get_plugin_data( __FILE__ );
+		}
+
 		/* Function check if plugin is compatible with current WP version  */
-		tstmnls_version_check();
+		bws_wp_version_check( plugin_basename( __FILE__ ), $tstmnls_plugin_info, "3.5" );
 
 		tstmnls_register_testimonial_post_type();
 	}
@@ -95,9 +56,6 @@ if ( ! function_exists ( 'tstmnls_init' ) ) {
 if ( ! function_exists ( 'tstmnls_admin_init' ) ) {
 	function tstmnls_admin_init() {
 		global $bws_plugin_info, $tstmnls_plugin_info, $pagenow;
-		/* Add variable for bws_menu */
-		if ( ! $tstmnls_plugin_info )
-			$tstmnls_plugin_info = get_plugin_data( __FILE__ );
 
 		if ( ! isset( $bws_plugin_info ) || empty( $bws_plugin_info ) )
 			$bws_plugin_info = array( 'id' => '180', 'version' => $tstmnls_plugin_info["Version"] );
@@ -107,25 +65,6 @@ if ( ! function_exists ( 'tstmnls_admin_init' ) ) {
 		/* Call register settings function */
 		if ( 'widgets.php' == $pagenow || ( isset( $_REQUEST['page'] ) && 'testimonials.php' == $_REQUEST['page'] ) )
 			tstmnls_register_settings();
-	}
-}
-
-/* Function check if plugin is compatible with current WP version  */
-if ( ! function_exists ( 'tstmnls_version_check' ) ) {
-	function tstmnls_version_check() {
-		global $wp_version, $tstmnls_plugin_info;
-		$require_wp		=	"3.5"; /* Wordpress at least requires version */
-		$plugin			=	plugin_basename( __FILE__ );
-	 	if ( version_compare( $wp_version, $require_wp, "<" ) ) {
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-			if ( is_plugin_active( $plugin ) ) {
-				deactivate_plugins( $plugin );
-				if ( ! $tstmnls_plugin_info )
-					$tstmnls_plugin_info = get_plugin_data( __FILE__ );
-				$admin_url = ( function_exists( 'get_admin_url' ) ) ? get_admin_url( null, 'plugins.php' ) : esc_url( '/wp-admin/plugins.php' );
-				wp_die( "<strong>" . $tstmnls_plugin_info['Name'] . " </strong> " . __( 'requires', 'testimonials' ) . " <strong>WordPress " . $require_wp . "</strong> " . __( 'or higher, that is why it has been deactivated! Please upgrade WordPress and try again.', 'testimonials') . "<br /><br />" . __( 'Back to the WordPress', 'testimonials') . " <a href='" . $admin_url . "</a>." );
-			}
-		}
 	}
 }
 
@@ -161,19 +100,15 @@ if ( ! function_exists( 'tstmnls_register_settings' ) ) {
 	function tstmnls_register_settings() {
 		global $tstmnls_options, $tstmnls_plugin_info;
 
-		if ( ! $tstmnls_plugin_info )
-			$tstmnls_plugin_info = get_plugin_data( __FILE__ );
-
 		$tstmnls_option_defaults = array(
 			'plugin_option_version' 	=> $tstmnls_plugin_info["Version"],
 			'widget_title'				=>	__( 'Testimonials', 'testimonials' ),
 			'count'						=>	'5'
-
 		);
 
 		/* Install the option defaults */
 		if ( ! get_option( 'tstmnls_options' ) )
-			add_option( 'tstmnls_options', $tstmnls_option_defaults, '', 'yes' );
+			add_option( 'tstmnls_options', $tstmnls_option_defaults );
 
 		$tstmnls_options = get_option( 'tstmnls_options' );
 
@@ -190,7 +125,7 @@ if ( ! function_exists( 'tstmnls_register_settings' ) ) {
 	*/
 if ( ! function_exists( 'tstmnls_settings_page' ) ) {
 	function tstmnls_settings_page(){ 
-		global $title, $tstmnls_options;
+		global $title, $tstmnls_options, $tstmnls_plugin_info;
 		$message = $error = ''; 
 		
 		if ( isset( $_POST['tstmnls_form_submit'] ) && check_admin_referer( plugin_basename( __FILE__ ), 'tstmnls_check_field' ) ) {
@@ -251,16 +186,7 @@ if ( ! function_exists( 'tstmnls_settings_page' ) ) {
 					<?php wp_nonce_field( plugin_basename( __FILE__ ), 'tstmnls_check_field' ) ?>
 				</p>
 			</form>
-			<div class="bws-plugin-reviews">
-				<div class="bws-plugin-reviews-rate">
-					<?php _e( 'If you enjoy our plugin, please give it 5 stars on WordPress', 'testimonials' ); ?>:
-					<a href="http://wordpress.org/support/view/plugin-reviews/bws-testimonials/" target="_blank" title="Testimonials reviews"><?php _e( 'Rate the plugin', 'testimonials' ); ?></a><br/>
-				</div>
-				<div class="bws-plugin-reviews-support">
-					<?php _e( 'If there is something wrong about it, please contact us', 'testimonials' ); ?>:
-					<a href="http://support.bestwebsoft.com">http://support.bestwebsoft.com</a>
-				</div>
-			</div>
+			<?php bws_plugin_reviews_block( $tstmnls_plugin_info["Name"], 'bws-testimonials' ); ?>
 		</div>
 	<?php }
 }
@@ -417,14 +343,16 @@ if ( ! function_exists ( 'tstmnls_wp_head' ) ) {
  */
 if ( ! function_exists( 'tstmnls_plugin_action_links' ) ) {
 	function tstmnls_plugin_action_links( $links, $file ) {
-		/* Static so we don't call plugin_basename on every plugin row. */
-		static $this_plugin;
-		if ( ! $this_plugin )
-			$this_plugin = plugin_basename(__FILE__);
+		if ( ! is_network_admin() ) {
+			/* Static so we don't call plugin_basename on every plugin row. */
+			static $this_plugin;
+			if ( ! $this_plugin )
+				$this_plugin = plugin_basename(__FILE__);
 
-		if ( $file == $this_plugin ) {
-			$settings_link = '<a href="admin.php?page=testimonials.php">' . __( 'Settings', 'testimonials' ) . '</a>';
-			array_unshift( $links, $settings_link );
+			if ( $file == $this_plugin ) {
+				$settings_link = '<a href="admin.php?page=testimonials.php">' . __( 'Settings', 'testimonials' ) . '</a>';
+				array_unshift( $links, $settings_link );
+			}
 		}
 		return $links;
 	}
@@ -434,7 +362,8 @@ if ( ! function_exists ( 'tstmnls_register_plugin_links' ) ) {
 	function tstmnls_register_plugin_links( $links, $file ) {
 		$base = plugin_basename(__FILE__);
 		if ( $file == $base ) {
-			$links[] = '<a href="admin.php?page=testimonials.php">' . __( 'Settings','testimonials' ) . '</a>';
+			if ( ! is_network_admin() )
+				$links[] = '<a href="admin.php?page=testimonials.php">' . __( 'Settings','testimonials' ) . '</a>';
 			$links[] = '<a href="http://wordpress.org/plugins/bws-testimonials/faq/" target="_blank">' . __( 'FAQ','testimonials' ) . '</a>';
 			$links[] = '<a href="http://support.bestwebsoft.com">' . __( 'Support','testimonials' ) . '</a>';
 		}

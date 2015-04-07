@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&product_id=94
 Tags: plugin, wordpress, testimonial, widget, custom post type, add testimonials, display testimonials, testimonials plugin, testimonial shortcode, testimonials widget, testimonial code, testinonial, testemonial, tastemonial, testimoneal, testemoneal, testimonila, author data, company data, multiple testimonials. 
 Requires at least: 3.5
-Tested up to: 4.1
-Stable tag: 0.1
+Tested up to: 4.2-beta4
+Stable tag: 0.1.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -17,7 +17,10 @@ Note: This is a public beta version, which contains basic product options. You a
 
 This plugin allows creating and displaying a Testimonial on your website. This testimonial can be displayed using the shortcode, a widget or by adding a code to your theme's template. 
 
+http://www.youtube.com/watch?v=y-9_ThXTUS8
+
 <a href="http://wordpress.org/plugins/bws-testimonials/faq/" target="_blank">FAQ</a>
+
 <a href="http://support.bestwebsoft.com" target="_blank">Support</a>
 
 = Features =
@@ -56,6 +59,8 @@ We can fix some things for free for the users who provide a translation of our p
 3. You can add the testimonial using your WordPress admin panel in "Testimonials" > "Add New".
 4. You can add "Testimonials Widget" to the necessary sidebar on "Appearance" > "Widgets" page, or copy and paste this shortcode into your post or page: [bws_testimonials].
 
+<a href="https://docs.google.com/document/d/1DrmEayBxjXaBVEvwOQjT8Gdpiy5vWrl2XNKDNuhM9qA/edit" target="_blank">View a Step-by-step Instruction on Testimonials Installation</a>.
+
 == Frequently Asked Questions ==
 
 = How can I add Testimonials to my website? =
@@ -84,19 +89,26 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 
 == Screenshots ==
 
-1. Testimonial Settings page.
-2. Testimonial Widget in WordPress admin panel.
+1. Testimonials Settings page.
+2. Testimonials Widget in WordPress admin panel.
 3. 'Add New Testimonial' page in WordPress admin panel.
-4. Testimonial Widget display with a standard theme.
-5. Testimonial Widget display with a custom theme.
+4. Testimonials Widget display with a standard theme.
+5. Testimonials Widget display with a custom theme.
 
 == Changelog ==
+
+= V0.1.1 - 07.04.2015 = 
+* Update : We updated all functionality for wordpress 4.2-beta4
+* Update : BWS plugins section is updated.
 
 = V0.1 - 27.01.2015 = 
 * Bugfix : The code refactoring was performed.
 * NEW : Css-style was added.
 
 == Upgrade Notice ==
+
+= V0.1.1 = 
+We updated all functionality for wordpress 4.2-beta4. BWS plugins section is updated.
 
 = V0.1 =
 The code refactoring. Css-style was added.

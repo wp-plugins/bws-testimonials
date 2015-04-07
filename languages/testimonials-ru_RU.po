@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: testimonials\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-05 10:19+0300\n"
-"PO-Revision-Date: 2015-02-05 10:19+0300\n"
+"POT-Creation-Date: 2015-04-06 16:29+0300\n"
+"PO-Revision-Date: 2015-04-06 16:29+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language: ru_RU\n"
@@ -16,152 +16,151 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: bws-testimonials.php:80
-msgid "Testimonials Settings"
-msgstr "Настройки Testimonials"
-
-#: bws-testimonials.php:80
-#: bws-testimonials.php:135
-#: bws-testimonials.php:169
-msgid "Testimonials"
-msgstr "Testimonials"
-
-#: bws-testimonials.php:105
-msgid "Testimonials Info"
-msgstr "Информация о тестимониалах"
-
-#: bws-testimonials.php:126
-msgid "requires"
-msgstr "требует"
-
-#: bws-testimonials.php:126
-msgid "or higher, that is why it has been deactivated! Please upgrade WordPress and try again."
-msgstr "или выше, поэтому плагин был деактивирован! Пожалуйста, обновите WordPress и попробуйте снова."
-
-#: bws-testimonials.php:126
-msgid "Back to the WordPress"
-msgstr "Вернуться к WordPress"
-
-#: bws-testimonials.php:136
-msgid "Testimonial"
-msgstr "Тестимониал"
-
-#: bws-testimonials.php:144
-msgid "Add a new testimonial"
-msgstr "Добавить новый тестимониал"
-
-#: bws-testimonials.php:145
-msgid "Edit testimonials"
-msgstr "Редактировать тестимониал"
-
-#: bws-testimonials.php:146
-msgid "New testimonial"
-msgstr "Новый тестимониал"
-
+#: bws-testimonials.php:32
 #: bws-testimonials.php:147
-msgid "View testimonials"
-msgstr "Просмотреть тестимониалы"
-
-#: bws-testimonials.php:148
-msgid "Search testimonials"
-msgstr "Поиск тестимониалов"
-
-#: bws-testimonials.php:149
-msgid "No testimonials found"
-msgstr "Ни одного тестимониала не найдено"
-
-#: bws-testimonials.php:150
-msgid "No testimonials found in Trash"
-msgstr "Ни одного тестимониала в Корзине не найдено"
-
-#: bws-testimonials.php:202
-msgid "Changes saved"
-msgstr "Изменения сохранены"
-
-#: bws-testimonials.php:208
-#: bws-testimonials.php:421
-#: bws-testimonials.php:432
+#: bws-testimonials.php:357
+#: bws-testimonials.php:370
 msgid "Settings"
 msgstr "Настройки"
 
-#: bws-testimonials.php:209
-#: bws-testimonials.php:433
+#: bws-testimonials.php:63
+msgid "Testimonials Info"
+msgstr "Информация о тестимониалах"
+
+#: bws-testimonials.php:74
+#: bws-testimonials.php:108
+msgid "Testimonials"
+msgstr "Testimonials"
+
+#: bws-testimonials.php:75
+msgid "Testimonial"
+msgstr "Тестимониал"
+
+#: bws-testimonials.php:83
+msgid "Add a new testimonial"
+msgstr "Добавить новый тестимониал"
+
+#: bws-testimonials.php:84
+msgid "Edit testimonials"
+msgstr "Редактировать тестимониал"
+
+#: bws-testimonials.php:85
+msgid "New testimonial"
+msgstr "Новый тестимониал"
+
+#: bws-testimonials.php:86
+msgid "View testimonials"
+msgstr "Просмотреть тестимониалы"
+
+#: bws-testimonials.php:87
+msgid "Search testimonials"
+msgstr "Поиск тестимониалов"
+
+#: bws-testimonials.php:88
+msgid "No testimonials found"
+msgstr "Ни одного тестимониала не найдено"
+
+#: bws-testimonials.php:89
+msgid "No testimonials found in Trash"
+msgstr "Ни одного тестимониала в Корзине не найдено"
+
+#: bws-testimonials.php:141
+msgid "Changes saved"
+msgstr "Изменения сохранены"
+
+#: bws-testimonials.php:148
+#: bws-testimonials.php:371
 msgid "FAQ"
 msgstr "FAQ"
 
-#: bws-testimonials.php:211
+#: bws-testimonials.php:150
 msgid "Notice:"
 msgstr "Обратите внимание:"
 
-#: bws-testimonials.php:211
+#: bws-testimonials.php:150
 msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
 msgstr "Настройки плагина были изменены. Чтобы сохранить их, пожалуйста, не забудьте нажать кнопку 'Сохранить изменения'."
 
-#: bws-testimonials.php:217
+#: bws-testimonials.php:156
 msgid "If you would like to display testimonials with a widget, you need to add the widget"
 msgstr "Если вы хотите, чтобы тестимониалы отображались при помощи виджета, вам нужно добавить этот виджет"
 
-#: bws-testimonials.php:218
-#: bws-testimonials.php:313
+#: bws-testimonials.php:157
+#: bws-testimonials.php:243
 msgid "Testimonials Widget"
 msgstr "Виджет \"Тестимониалы\""
 
-#: bws-testimonials.php:219
+#: bws-testimonials.php:158
 msgid "on the Widgets tab"
 msgstr "на вкладке виджетов"
 
-#: bws-testimonials.php:222
+#: bws-testimonials.php:161
 msgid "If you would like to add testimonials to your website, just copy and paste this shortcode into your post or page:"
 msgstr "Если вы хотите добавить тестимониалы на свой сайт, вам нужно скопировать и вставить шорткод в контент страницы или поста:"
 
-#: bws-testimonials.php:225
+#: bws-testimonials.php:164
 msgid "Also, you can paste the following strings into the template source code"
 msgstr "Также, вы можете вставить следующие строки в исходный код шаблона"
 
-#: bws-testimonials.php:235
+#: bws-testimonials.php:174
 msgid "Widget title"
 msgstr "Название виджета"
 
-#: bws-testimonials.php:241
-#: bws-testimonials.php:343
+#: bws-testimonials.php:180
+#: bws-testimonials.php:273
 msgid "Number of testimonials to be displayed"
 msgstr "Количество тестимониалов для отображения"
 
-#: bws-testimonials.php:249
+#: bws-testimonials.php:188
 msgid "Save Changes"
 msgstr "Сохранить настройки"
 
-#: bws-testimonials.php:256
-msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
-msgstr "Если вам понравился плагин, мы будем благодарны, если вы поставите нам 5 звезд на WordPress"
-
-#: bws-testimonials.php:257
-msgid "Rate the plugin"
-msgstr "Оценить плагин"
-
-#: bws-testimonials.php:260
-msgid "If there is something wrong about it, please contact us"
-msgstr "Если у вас есть какие-то вопросы, обращайтесь"
-
-#: bws-testimonials.php:273
+#: bws-testimonials.php:203
 msgid "Author"
 msgstr "Автор"
 
-#: bws-testimonials.php:277
+#: bws-testimonials.php:207
 msgid "Company Name"
 msgstr "Название компании"
 
-#: bws-testimonials.php:314
+#: bws-testimonials.php:244
 msgid "Widget for displaying Testimonials."
 msgstr "Виджет для отображения тестимониалов."
 
-#: bws-testimonials.php:339
+#: bws-testimonials.php:269
 msgid "Widget Title"
 msgstr "Название виджета"
 
-#: bws-testimonials.php:434
+#: bws-testimonials.php:372
 msgid "Support"
 msgstr "Тех.поддержка"
+
+#~ msgid "Testimonials Settings"
+#~ msgstr "Настройки Testimonials"
+
+#~ msgid "requires"
+#~ msgstr "требует"
+
+#~ msgid ""
+#~ "or higher, that is why it has been deactivated! Please upgrade WordPress "
+#~ "and try again."
+#~ msgstr ""
+#~ "или выше, поэтому плагин был деактивирован! Пожалуйста, обновите "
+#~ "WordPress и попробуйте снова."
+
+#~ msgid "Back to the WordPress"
+#~ msgstr "Вернуться к WordPress"
+
+#~ msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+#~ msgstr ""
+#~ "Если вам понравился плагин, мы будем благодарны, если вы поставите нам 5 "
+#~ "звезд на WordPress"
+
+#~ msgid "Rate the plugin"
+#~ msgstr "Оценить плагин"
+
+#~ msgid "If there is something wrong about it, please contact us"
+#~ msgstr "Если у вас есть какие-то вопросы, обращайтесь"
 
 #~ msgid "Plugins page"
 #~ msgstr "Странице плагинов"
