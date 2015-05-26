@@ -4,7 +4,7 @@ Plugin Name: Testimonials by BestWebSoft
 Plugin URI: http://bestwebsoft.com/products/
 Description: Plugin for displaying Testimonials.
 Author: BestWebSoft
-Version: 0.1.1
+Version: 0.1.2
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -29,7 +29,7 @@ License: GPLv3 or later
 if ( ! function_exists( 'tstmnls_admin_menu' ) ) {
 	function tstmnls_admin_menu() {
 		bws_add_general_menu( plugin_basename( __FILE__ ) );
-		add_submenu_page( 'bws_plugins', 'Testimonials ' . __( 'Settings', 'testimonials' ), 'Testimonials', 'manage_options', "testimonials.php", 'tstmnls_settings_page' );
+		add_submenu_page( 'bws_plugins', __( 'Testimonials Settings', 'testimonials' ), 'Testimonials', 'manage_options', "testimonials.php", 'tstmnls_settings_page' );
 	}
 }
 
@@ -230,55 +230,57 @@ if ( ! function_exists( 'tstmnls_save_postdata' ) ) {
 	}
 }
 
-class Testimonials extends WP_Widget {
+if ( ! class_exists( 'Testimonials' ) ) {
+	class Testimonials extends WP_Widget {
 
-	function Testimonials() {
-		/* Instantiate the parent object */
-		parent::__construct( 
-			'tstmnls_testimonails_widget', 
-			__( 'Testimonials Widget', 'testimonials' ),
-			array( 'description' => __( 'Widget for displaying Testimonials.', 'testimonials' ) )
-		);
-	}
+		function Testimonials() {
+			/* Instantiate the parent object */
+			parent::__construct( 
+				'tstmnls_testimonails_widget', 
+				__( 'Testimonials Widget', 'testimonials' ),
+				array( 'description' => __( 'Widget for displaying Testimonials.', 'testimonials' ) )
+			);
+		}
 
-	function widget( $args, $instance ) {
-		global $tstmnls_options;
-		if ( empty( $tstmnls_options ) )
-			$tstmnls_options = get_option( 'tstmnls_options' );
-		$widget_title   = isset( $instance['widget_title'] ) ? $instance['widget_title'] : $tstmnls_options['widget_title'];
-		$count  		= isset( $instance['count'] ) ? $instance['count'] : $tstmnls_options['count'];
-		echo $args['before_widget'];
-		if ( ! empty( $widget_title ) ) { 
-			echo $args['before_title'] . $widget_title . $args['after_title'];
-		} 
-		tstmnls_show_testimonials( $count );		
-		echo $args['after_widget'];
-	}
+		function widget( $args, $instance ) {
+			global $tstmnls_options;
+			if ( empty( $tstmnls_options ) )
+				$tstmnls_options = get_option( 'tstmnls_options' );
+			$widget_title   = isset( $instance['widget_title'] ) ? $instance['widget_title'] : $tstmnls_options['widget_title'];
+			$count  		= isset( $instance['count'] ) ? $instance['count'] : $tstmnls_options['count'];
+			echo $args['before_widget'];
+			if ( ! empty( $widget_title ) ) { 
+				echo $args['before_title'] . $widget_title . $args['after_title'];
+			} 
+			tstmnls_show_testimonials( $count );		
+			echo $args['after_widget'];
+		}
 
-	function form( $instance ) {
-		global $tstmnls_options;
-		if ( empty( $tstmnls_options ) )
-			$tstmnls_options = get_option( 'tstmnls_options' );
-		$widget_title  	= isset( $instance['widget_title'] ) ? $instance['widget_title'] : $tstmnls_options['widget_title'];
-		$count  		= isset( $instance['count'] ) ? $instance['count'] : $tstmnls_options['count']; ?>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'widget_title' ); ?>"><?php _e( 'Widget Title', 'testimonials' ); ?>: </label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'widget_title' ); ?>" name="<?php echo $this->get_field_name( 'widget_title' ); ?>" type="text" value="<?php echo esc_attr( $widget_title ); ?>"/>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e( 'Number of testimonials to be displayed', 'testimonials' ); ?>: </label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" type="number" value="<?php echo esc_attr( $count ); ?>"/>
-		</p>
-	<?php }
+		function form( $instance ) {
+			global $tstmnls_options;
+			if ( empty( $tstmnls_options ) )
+				$tstmnls_options = get_option( 'tstmnls_options' );
+			$widget_title  	= isset( $instance['widget_title'] ) ? $instance['widget_title'] : $tstmnls_options['widget_title'];
+			$count  		= isset( $instance['count'] ) ? $instance['count'] : $tstmnls_options['count']; ?>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'widget_title' ); ?>"><?php _e( 'Widget Title', 'testimonials' ); ?>: </label>
+				<input class="widefat" id="<?php echo $this->get_field_id( 'widget_title' ); ?>" name="<?php echo $this->get_field_name( 'widget_title' ); ?>" type="text" value="<?php echo esc_attr( $widget_title ); ?>"/>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e( 'Number of testimonials to be displayed', 'testimonials' ); ?>: </label>
+				<input class="widefat" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" type="number" value="<?php echo esc_attr( $count ); ?>"/>
+			</p>
+		<?php }
 
-	function update( $new_instance, $old_instance ) {
-		global $tstmnls_options;
-		if ( empty( $tstmnls_options ) )
-			$tstmnls_options = get_option( 'tstmnls_options' );
-		$instance = array();
-		$instance['widget_title']	= ( isset( $new_instance['widget_title'] ) ) ? stripslashes( esc_html( $new_instance['widget_title'] ) ) : $tstmnls_options['widget_title'];
-		$instance['count']			= ( ! empty( $new_instance['count'] ) ) ? intval( $new_instance['count'] ) : $tstmnls_options['count'];
-		return $instance;
+		function update( $new_instance, $old_instance ) {
+			global $tstmnls_options;
+			if ( empty( $tstmnls_options ) )
+				$tstmnls_options = get_option( 'tstmnls_options' );
+			$instance = array();
+			$instance['widget_title']	= ( isset( $new_instance['widget_title'] ) ) ? stripslashes( esc_html( $new_instance['widget_title'] ) ) : $tstmnls_options['widget_title'];
+			$instance['count']			= ( ! empty( $new_instance['count'] ) ) ? intval( $new_instance['count'] ) : $tstmnls_options['count'];
+			return $instance;
+		}
 	}
 }
 

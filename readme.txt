@@ -1,10 +1,10 @@
 === Testimonials by BestWebSoft ===
 Contributors: bestwebsoft
-Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&product_id=94
+Donate link: http://bestwebsoft.com/donate/
 Tags: plugin, wordpress, testimonial, widget, custom post type, add testimonials, display testimonials, testimonials plugin, testimonial shortcode, testimonials widget, testimonial code, testinonial, testemonial, tastemonial, testimoneal, testemoneal, testimonila, author data, company data, multiple testimonials. 
 Requires at least: 3.5
-Tested up to: 4.2-beta4
-Stable tag: 0.1.1
+Tested up to: 4.2.2
+Stable tag: 0.1.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,6 +18,8 @@ Note: This is a public beta version, which contains basic product options. You a
 This plugin allows creating and displaying a Testimonial on your website. This testimonial can be displayed using the shortcode, a widget or by adding a code to your theme's template. 
 
 http://www.youtube.com/watch?v=y-9_ThXTUS8
+
+<a href="http://www.youtube.com/watch?v=YMPuEmLELfk" target="_blank">Video instruction on Installation</a>
 
 <a href="http://wordpress.org/plugins/bws-testimonials/faq/" target="_blank">FAQ</a>
 
@@ -61,15 +63,18 @@ We can fix some things for free for the users who provide a translation of our p
 
 <a href="https://docs.google.com/document/d/1DrmEayBxjXaBVEvwOQjT8Gdpiy5vWrl2XNKDNuhM9qA/edit" target="_blank">View a Step-by-step Instruction on Testimonials Installation</a>.
 
+http://www.youtube.com/watch?v=YMPuEmLELfk
+
 == Frequently Asked Questions ==
 
 = How can I add Testimonials to my website? =
 
 1. Please create a testimonial using your WordPress admin panel in "Testimonials" > "Add New".
 2. There are 3 ways to add Testimonials:
-a) You can add "Testimonials Widget" to the necessary sidebar on "Appearance" > "Widgets" page.
-b) You can copy and paste this shortcode into your post or page: [bws_testimonials]
-c) Paste the following strings into the template source code `<?php if ( has_action( 'tstmnls_show_testimonials' ) ) { do_action( 'tstmnls_show_testimonials' ); } ?>`
+
+- You can add "Testimonials Widget" to the necessary sidebar on "Appearance" > "Widgets" page.
+- You can copy and paste this shortcode into your post or page: [bws_testimonials]
+- Paste the following strings into the template source code `<?php if ( has_action( 'tstmnls_show_testimonials' ) ) { do_action( 'tstmnls_show_testimonials' ); } ?>`
 
 = I have added Testimonials Widget to the sidebar, yet nothing changed =
 
@@ -82,6 +87,7 @@ To have more testimonials displayed on your website, you need to add them using 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
 Please make sure that the problem hasn't been discussed on our forum yet (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If not, please provide the following data along with your problem's description:
+
 1. the link to the page, on which the problem occurs
 2. the plugin’s name and version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
@@ -97,6 +103,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 
 == Changelog ==
 
+= V0.1.2 - 26.05.2015 = 
+* Update : We updated all functionality for wordpress 4.2.2
+
 = V0.1.1 - 07.04.2015 = 
 * Update : We updated all functionality for wordpress 4.2-beta4
 * Update : BWS plugins section is updated.
@@ -106,6 +115,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 * NEW : Css-style was added.
 
 == Upgrade Notice ==
+
+= V0.1.2 = 
+We updated all functionality for wordpress 4.2.2
 
 = V0.1.1 = 
 We updated all functionality for wordpress 4.2-beta4. BWS plugins section is updated.
