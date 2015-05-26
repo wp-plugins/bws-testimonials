@@ -1,0 +1,25 @@
+#adminmenu #menu-posts-bws-testimonial:hover div.wp-menu-image:before,
+#adminmenu #menu-posts-bws-testimonial.wp-has-current-submenu div.wp-menu-image:before,
+#adminmenu #menu-posts-bws-testimonial div.wp-menu-image:before {
+    background: url("../images/menu_single.png") no-repeat scroll center 8px transparent;
+    content: '';
+}
+#adminmenu #menu-posts-bws-testimonial.wp-not-current-submenu div.wp-menu-image {
+    opacity: 0.7;
+}
+/*
+* styles for widget
+*/
+.testimonial_quote_footer {
+	text-align: right;
+	margin-bottom: 10px;
+}
+/*
+* styles for settings page
+*/
+.tstmnls_code {
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+    font-size: 14px;
+    margin: 0 1px;
+    padding: 3px 5px 2px;
+}
