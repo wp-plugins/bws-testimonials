@@ -4,7 +4,7 @@ Plugin Name: Testimonials by BestWebSoft
 Plugin URI: http://bestwebsoft.com/products/
 Description: Plugin for displaying Testimonials.
 Author: BestWebSoft
-Version: 0.1.2
+Version: 0.1.3
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -35,8 +35,7 @@ if ( ! function_exists( 'tstmnls_admin_menu' ) ) {
 
 if ( ! function_exists ( 'tstmnls_init' ) ) {
 	function tstmnls_init() {
-		global $tstmnls_plugin_info;
-		load_plugin_textdomain( 'testimonials', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		global $tstmnls_plugin_info;		
 
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_functions.php' );
 		
@@ -47,7 +46,7 @@ if ( ! function_exists ( 'tstmnls_init' ) ) {
 		}
 
 		/* Function check if plugin is compatible with current WP version  */
-		bws_wp_version_check( plugin_basename( __FILE__ ), $tstmnls_plugin_info, "3.5" );
+		bws_wp_version_check( plugin_basename( __FILE__ ), $tstmnls_plugin_info, '3.5' );
 
 		tstmnls_register_testimonial_post_type();
 	}
@@ -98,7 +97,7 @@ if ( ! function_exists ( 'tstmnls_register_testimonial_post_type' ) ) {
 	*/
 if ( ! function_exists( 'tstmnls_register_settings' ) ) {
 	function tstmnls_register_settings() {
-		global $tstmnls_options, $tstmnls_plugin_info;
+		global $tstmnls_options, $tstmnls_plugin_info, $tstmnls_option_defaults;
 
 		$tstmnls_option_defaults = array(
 			'plugin_option_version' 	=> $tstmnls_plugin_info["Version"],
@@ -125,7 +124,7 @@ if ( ! function_exists( 'tstmnls_register_settings' ) ) {
 	*/
 if ( ! function_exists( 'tstmnls_settings_page' ) ) {
 	function tstmnls_settings_page(){ 
-		global $title, $tstmnls_options, $tstmnls_plugin_info;
+		global $title, $tstmnls_options, $tstmnls_plugin_info, $tstmnls_option_defaults;
 		$message = $error = ''; 
 		
 		if ( isset( $_POST['tstmnls_form_submit'] ) && check_admin_referer( plugin_basename( __FILE__ ), 'tstmnls_check_field' ) ) {
@@ -134,8 +133,16 @@ if ( ! function_exists( 'tstmnls_settings_page' ) ) {
 			$tstmnls_options['count'] = intval( $_POST['tstmnls_count'] );
 
 			update_option( 'tstmnls_options', $tstmnls_options ); 
-			$message = __( 'Changes saved', 'testimonials' );
-		} ?>
+			$message = __( 'Settings saved', 'testimonials' );
+		}
+		/* Add restore function */
+		if ( isset( $_REQUEST['bws_restore_confirm'] ) && check_admin_referer( plugin_basename(__FILE__), 'bws_settings_nonce_name' ) ) {
+			$tstmnls_options = $tstmnls_option_defaults;
+			update_option( 'tstmnls_options', $tstmnls_options );
+			$message = __( 'All plugin settings were restored.', 'testimonials' );
+		} /* end */
+
+		 ?>
 		<div class="wrap">
 			<div class="icon32 icon32-bws" id="icon-options-general"></div>
 			<h2><?php echo $title; ?></h2>
@@ -144,49 +151,56 @@ if ( ! function_exists( 'tstmnls_settings_page' ) ) {
 				<a class="nav-tab" href="http://bestwebsoft.com/products/testimonials/faq/" target="_blank"><?php _e( 'FAQ', 'testimonials' ); ?></a>
 			</h2>
 			<div id="tstmnls_settings_notice" class="updated fade" style="display:none"><p><strong><?php _e( "Notice:", 'testimonials' ); ?></strong> <?php _e( "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button.", 'testimonials' ); ?></p></div>
-			<div class="updated fade" <?php if ( ! isset( $_REQUEST['tstmnls_submit'] ) || $error != "" ) echo "style=\"display:none\""; ?>><p><strong><?php echo $message; ?></strong></p></div>
+			<div class="updated fade" <?php if ( $message == "" || "" != $error ) echo "style=\"display:none\""; ?>><p><strong><?php echo $message; ?></strong></p></div>
 			<div class="error" <?php if ( "" == $error ) echo "style=\"display:none\""; ?>><p><?php echo $error; ?></p></div>
-			<form id="tstmnls_settings_form" method='post' action='admin.php?page=testimonials.php'>
-				<p><?php printf(
-						'%1$s "<strong>%2$s</strong>" %3$s.',
-						__( 'If you would like to display testimonials with a widget, you need to add the widget', 'testimonials' ),
-						__( 'Testimonials Widget', 'testimonials' ),
-						__( 'on the Widgets tab', 'testimonials' )
-					); ?>
-				</p>	
-				<?php _e( "If you would like to add testimonials to your website, just copy and paste this shortcode into your post or page:", 'testimonials' ); ?> <span class="tstmnls_code">[bws_testimonials]</span>.
-				</p>
-				<p>
-					<?php _e( "Also, you can paste the following strings into the template source code", 'testimonials' ); ?> 
-					<code>
-						&lt;?php if ( has_action( 'tstmnls_show_testimonials' ) ) {
-							do_action( 'tstmnls_show_testimonials' );
-						} ?&gt;
-					</code>
-				</p>
-				<table class="form-table">
-					<tbody>
-						<tr>
-							<th scope="row"><?php _e( 'Widget title', 'testimonials' ); ?></th>
-							<td>
-								<input type="text" class="text" value="<?php echo $tstmnls_options['widget_title']; ?>" name="tstmnls_widget_title" />
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><?php _e( 'Number of testimonials to be displayed', 'testimonials' ); ?></th>
-							<td>
-								<input type="number" class="text" value="<?php echo $tstmnls_options['count']; ?>" name="tstmnls_count" />
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<p class="submit">
-					<input type="submit" value="<?php _e( 'Save Changes', 'testimonials' ); ?>" class="button button-primary" id="submit" name="tstmnls_submit">
-					<input type="hidden" name="tstmnls_form_submit" value="submit" />
-					<?php wp_nonce_field( plugin_basename( __FILE__ ), 'tstmnls_check_field' ) ?>
-				</p>
-			</form>
-			<?php bws_plugin_reviews_block( $tstmnls_plugin_info["Name"], 'bws-testimonials' ); ?>
+			<?php if ( ! isset( $_GET['action'] ) ) { 
+				if ( isset( $_REQUEST['bws_restore_default'] ) && check_admin_referer( plugin_basename(__FILE__), 'bws_settings_nonce_name' ) ) {
+					bws_form_restore_default_confirm( plugin_basename(__file__) );
+				} else { ?>
+					<form id="tstmnls_settings_form" method='post' action='admin.php?page=testimonials.php'>
+						<p><?php printf(
+								'%1$s "<strong>%2$s</strong>" %3$s.',
+								__( 'If you would like to display testimonials with a widget, you need to add the widget', 'testimonials' ),
+								__( 'Testimonials Widget', 'testimonials' ),
+								__( 'on the Widgets tab', 'testimonials' )
+							); ?>
+						</p>	
+						<?php _e( "If you would like to add testimonials to your website, just copy and paste this shortcode into your post or page:", 'testimonials' ); ?> <span class="tstmnls_code">[bws_testimonials]</span>.
+						</p>
+						<p>
+							<?php _e( "Also, you can paste the following strings into the template source code", 'testimonials' ); ?> 
+							<code>
+								&lt;?php if ( has_action( 'tstmnls_show_testimonials' ) ) {
+									do_action( 'tstmnls_show_testimonials' );
+								} ?&gt;
+							</code>
+						</p>
+						<table class="form-table">
+							<tbody>
+								<tr>
+									<th scope="row"><?php _e( 'Widget title', 'testimonials' ); ?></th>
+									<td>
+										<input type="text" class="text" maxlength="250" value="<?php echo $tstmnls_options['widget_title']; ?>" name="tstmnls_widget_title"/>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><?php _e( 'Number of testimonials to be displayed', 'testimonials' ); ?></th>
+									<td>
+										<input type="number" class="text" min="1" max="10000" value="<?php echo $tstmnls_options['count']; ?>" name="tstmnls_count" />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<p class="submit">
+							<input type="submit" value="<?php _e( 'Save Changes', 'testimonials' ); ?>" class="button button-primary" id="submit" name="tstmnls_submit">
+							<input type="hidden" name="tstmnls_form_submit" value="submit" />
+							<?php wp_nonce_field( plugin_basename( __FILE__ ), 'tstmnls_check_field' ) ?>
+						</p>
+					</form>
+					<?php bws_form_restore_default_settings( plugin_basename(__file__) );
+				}
+			}
+			bws_plugin_reviews_block( $tstmnls_plugin_info["Name"], 'bws-testimonials' ); ?>
 		</div>
 	<?php }
 }
@@ -246,8 +260,8 @@ if ( ! class_exists( 'Testimonials' ) ) {
 			global $tstmnls_options;
 			if ( empty( $tstmnls_options ) )
 				$tstmnls_options = get_option( 'tstmnls_options' );
-			$widget_title   = isset( $instance['widget_title'] ) ? $instance['widget_title'] : $tstmnls_options['widget_title'];
-			$count  		= isset( $instance['count'] ) ? $instance['count'] : $tstmnls_options['count'];
+			$widget_title   = isset( $instance['widget_title'] ) ? stripslashes( esc_html( $instance['widget_title'] ) ) : $tstmnls_options['widget_title'];
+			$count  		= isset( $instance['count'] ) ? intval( $instance['count'] ) : $tstmnls_options['count'];
 			echo $args['before_widget'];
 			if ( ! empty( $widget_title ) ) { 
 				echo $args['before_title'] . $widget_title . $args['after_title'];
@@ -260,15 +274,15 @@ if ( ! class_exists( 'Testimonials' ) ) {
 			global $tstmnls_options;
 			if ( empty( $tstmnls_options ) )
 				$tstmnls_options = get_option( 'tstmnls_options' );
-			$widget_title  	= isset( $instance['widget_title'] ) ? $instance['widget_title'] : $tstmnls_options['widget_title'];
-			$count  		= isset( $instance['count'] ) ? $instance['count'] : $tstmnls_options['count']; ?>
+			$widget_title  	= isset( $instance['widget_title'] ) ? stripslashes( esc_html( $instance['widget_title'] ) ) : $tstmnls_options['widget_title'];
+			$count  		= isset( $instance['count'] ) ? intval( $instance['count'] ) : $tstmnls_options['count']; ?>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'widget_title' ); ?>"><?php _e( 'Widget Title', 'testimonials' ); ?>: </label>
-				<input class="widefat" id="<?php echo $this->get_field_id( 'widget_title' ); ?>" name="<?php echo $this->get_field_name( 'widget_title' ); ?>" type="text" value="<?php echo esc_attr( $widget_title ); ?>"/>
+				<input class="widefat" id="<?php echo $this->get_field_id( 'widget_title' ); ?>" name="<?php echo $this->get_field_name( 'widget_title' ); ?>" type="text" maxlength="250" value="<?php echo esc_attr( $widget_title ); ?>"/>
 			</p>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e( 'Number of testimonials to be displayed', 'testimonials' ); ?>: </label>
-				<input class="widefat" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" type="number" value="<?php echo esc_attr( $count ); ?>"/>
+				<input class="widefat" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" type="number" min="1" max="10000" value="<?php echo esc_attr( $count ); ?>"/>
 			</p>
 		<?php }
 
@@ -375,6 +389,7 @@ if ( ! function_exists ( 'tstmnls_register_plugin_links' ) ) {
 
 if ( ! function_exists ( 'tstmnls_register_widgets' ) ) {
 	function tstmnls_register_widgets() {
+		load_plugin_textdomain( 'testimonials', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 		register_widget( 'Testimonials' );
 	}
 }

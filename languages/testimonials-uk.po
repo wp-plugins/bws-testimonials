@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: testimonials\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-26 14:13+0300\n"
-"PO-Revision-Date: 2015-05-26 14:14+0300\n"
-"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
+"POT-Creation-Date: 2015-07-29 12:23+0300\n"
+"PO-Revision-Date: 2015-07-31 16:20+0300\n"
+"Last-Translator: plugin@bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -13,131 +13,143 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.5.7\n"
-"X-Poedit-Language: Ukrainian\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: bws-testimonials.php:32
 msgid "Testimonials Settings"
 msgstr "Налаштування Testimonials"
 
-#: bws-testimonials.php:63
+#: bws-testimonials.php:62
 msgid "Testimonials Info"
-msgstr "Інформація про Testimonials"
+msgstr "Інформація про відгуки"
+
+#: bws-testimonials.php:73 bws-testimonials.php:104
+msgid "Testimonials"
+msgstr "Відгуки"
 
 #: bws-testimonials.php:74
-#: bws-testimonials.php:105
-msgid "Testimonials"
-msgstr "Testimonials"
-
-#: bws-testimonials.php:75
 msgid "Testimonial"
 msgstr "Відгук"
 
-#: bws-testimonials.php:83
+#: bws-testimonials.php:82
 msgid "Add a new testimonial"
 msgstr "Додати новий відгук"
 
-#: bws-testimonials.php:84
+#: bws-testimonials.php:83
 msgid "Edit testimonials"
 msgstr "Редагувати відгук"
 
-#: bws-testimonials.php:85
+#: bws-testimonials.php:84
 msgid "New testimonial"
 msgstr "Новий відгук"
 
-#: bws-testimonials.php:86
+#: bws-testimonials.php:85
 msgid "View testimonials"
 msgstr "Проглянути відгуки"
 
-#: bws-testimonials.php:87
+#: bws-testimonials.php:86
 msgid "Search testimonials"
 msgstr "Шукати відгук"
 
-#: bws-testimonials.php:88
+#: bws-testimonials.php:87
 msgid "No testimonials found"
 msgstr "Жодного відгуку не знайдено"
 
-#: bws-testimonials.php:89
+#: bws-testimonials.php:88
 msgid "No testimonials found in Trash"
 msgstr "В Кошику не знайдено жодного відгуку"
 
-#: bws-testimonials.php:137
-msgid "Changes saved"
-msgstr "Зміни збережено"
+#: bws-testimonials.php:136
+msgid "Settings saved"
+msgstr "Налаштування збережено."
 
-#: bws-testimonials.php:143
-#: bws-testimonials.php:353
-#: bws-testimonials.php:366
+#: bws-testimonials.php:142
+msgid "All plugin settings were restored."
+msgstr "Всі налаштування плагіну було скинуто до стандартних."
+
+#: bws-testimonials.php:150 bws-testimonials.php:369 bws-testimonials.php:382
 msgid "Settings"
 msgstr "Налаштування"
 
-#: bws-testimonials.php:144
-#: bws-testimonials.php:367
+#: bws-testimonials.php:151 bws-testimonials.php:383
 msgid "FAQ"
 msgstr "FAQ"
 
-#: bws-testimonials.php:146
+#: bws-testimonials.php:153
 msgid "Notice:"
 msgstr "Зверніть увагу:"
 
-#: bws-testimonials.php:146
-msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
-msgstr "Налаштування плагіну змінено. Щоб зберегти їх, будь ласка, не забудьте клікнути 'Зберегти  зміни'."
-
-#: bws-testimonials.php:152
-msgid "If you would like to display testimonials with a widget, you need to add the widget"
-msgstr "Якщо ви хочете, щоб відгуки відображались за допомогою віджету, вам потрібно спершу його додати"
-
 #: bws-testimonials.php:153
-#: bws-testimonials.php:239
+msgid ""
+"The plugin's settings have been changed. In order to save them please don't "
+"forget to click the 'Save Changes' button."
+msgstr ""
+"Налаштування плагіну змінено. Щоб зберегти їх, будь ласка, не забудьте "
+"клікнути 'Зберегти  зміни'."
+
+#: bws-testimonials.php:163
+msgid ""
+"If you would like to display testimonials with a widget, you need to add the "
+"widget"
+msgstr ""
+"Якщо ви хочете, щоб відгуки відображались за допомогою віджету, вам потрібно "
+"спершу його додати"
+
+#: bws-testimonials.php:164 bws-testimonials.php:254
 msgid "Testimonials Widget"
 msgstr "Віджет \"Відгуки\""
 
-#: bws-testimonials.php:154
+#: bws-testimonials.php:165
 msgid "on the Widgets tab"
 msgstr "на вкладці віджетів"
 
-#: bws-testimonials.php:157
-msgid "If you would like to add testimonials to your website, just copy and paste this shortcode into your post or page:"
-msgstr "Якщо ви хочете додати відгуки на свій сайт,  вставте цей шорткод у контент сторінки чи посту:"
+#: bws-testimonials.php:168
+msgid ""
+"If you would like to add testimonials to your website, just copy and paste "
+"this shortcode into your post or page:"
+msgstr ""
+"Якщо ви хочете додати відгуки на свій сайт,  вставте цей шорткод у контент "
+"сторінки чи посту:"
 
-#: bws-testimonials.php:160
+#: bws-testimonials.php:171
 msgid "Also, you can paste the following strings into the template source code"
 msgstr "Також ви можете вставити наступні строки у початковий код шаблону"
 
-#: bws-testimonials.php:170
+#: bws-testimonials.php:181
 msgid "Widget title"
 msgstr "Назва Віджету"
 
-#: bws-testimonials.php:176
-#: bws-testimonials.php:269
+#: bws-testimonials.php:187 bws-testimonials.php:284
 msgid "Number of testimonials to be displayed"
 msgstr "Кількість відгуків, що будуть відображатись"
 
-#: bws-testimonials.php:184
+#: bws-testimonials.php:195
 msgid "Save Changes"
 msgstr "Зберегти зміни"
 
-#: bws-testimonials.php:199
+#: bws-testimonials.php:213
 msgid "Author"
 msgstr "Автор"
 
-#: bws-testimonials.php:203
+#: bws-testimonials.php:217
 msgid "Company Name"
 msgstr "Назва компанії"
 
-#: bws-testimonials.php:240
+#: bws-testimonials.php:255
 msgid "Widget for displaying Testimonials."
 msgstr "Віджет для відображення відгуків."
 
-#: bws-testimonials.php:265
+#: bws-testimonials.php:280
 msgid "Widget Title"
 msgstr "Назва віджету"
 
-#: bws-testimonials.php:368
+#: bws-testimonials.php:384
 msgid "Support"
 msgstr "Техпідтримка"
+
+#~ msgid "Changes saved"
+#~ msgstr "Зміни збережено"
 
 #~ msgid "requires"
 #~ msgstr "вимагає"
